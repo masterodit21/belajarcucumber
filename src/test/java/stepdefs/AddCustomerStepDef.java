@@ -4,7 +4,9 @@ package stepdefs;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,12 +22,17 @@ public class AddCustomerStepDef {
                 "D:\\webdriver\\msedgedriver.exe");
         driver = new EdgeDriver();
 
+        wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        driver.get(baseURL);
+        driver.manage().window().maximize();
+
     }
 
     @When("tekan menu customer")
     public void tekan_menu_customer() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String linkAddCustomerPath = "//a[text()=\"Add Customer\"]";
+        WebElement linkAdd = driver.findElement(By.xpath(linkAddCustomerPath));
+        linkAdd.click();
     }
 
     @When("ada di halaman customer")
